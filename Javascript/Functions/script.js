@@ -16,7 +16,7 @@ sum = add2(5,11) // This functions get the sum of 2 numbers
 console.log(sum) //Print the sum of 2 numbers.
 
 function printName(name) {
-    console.log(`Hello ${name}`)
+    console.log(`Hello ${name}`) // This is the function which print string argument to console
 }
 
 printName("Sanket")
