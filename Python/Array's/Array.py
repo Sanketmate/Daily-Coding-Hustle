@@ -9,3 +9,8 @@ print("Last fruit:", fruits[-1])
 
 # Print the length of the array
 print("Length of the array:", len(fruits))
+
+# Print all fruits using a loop
+print("All fruits:")
+for fruit in fruits:
+    print(fruit)
