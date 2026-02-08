@@ -1,13 +1,13 @@
-# 📘 Python Basic Programs – With Solutions & Optimized Approaches
+# 📘 JavaScript Basic Programs – With Solutions & Optimized Approaches
 
-This README contains common beginner-level Python programs with:
+This README contains common beginner-level JavaScript programs with:
 
 * Problem Statement
 * Standard Solution
 * Optimized Approach
 * Explanation
 
-These programs help in building strong fundamentals in Python programming.
+These programs help in building strong fundamentals in JavaScript programming.
 
 ---
 
@@ -26,7 +26,7 @@ These programs help in building strong fundamentals in Python programming.
 
 ---
 
-## 1️⃣ Fibonacci Series in Python
+## 1️⃣ Fibonacci Series in JavaScript
 
 ### Problem
 
@@ -34,20 +34,21 @@ Print Fibonacci series up to `n` terms.
 
 ### Optimized Solution
 
-```python
-n = int(input("Enter number of terms: "))
+```javascript
+let n = Number(prompt("Enter number of terms:"));
 
-a, b = 0, 1
+let a = 0, b = 1;
 
-for _ in range(n):
-    print(a, end=" ")
-    a, b = b, a + b
+for (let i = 0; i < n; i++) {
+  console.log(a);
+  [a, b] = [b, a + b];
+}
 ```
 
 ### Explanation
 
-* Uses iteration instead of recursion
-* Tuple swapping for efficiency
+* Uses iteration
+* Destructuring for swapping
 * Time Complexity: **O(n)**
 
 ---
@@ -60,23 +61,25 @@ Check if a number is prime.
 
 ### Optimized Solution
 
-```python
-num = int(input("Enter number: "))
+```javascript
+let num = Number(prompt("Enter number:"));
+let isPrime = true;
 
-if num <= 1:
-    print("Not Prime")
-else:
-    for i in range(2, int(num ** 0.5) + 1):
-        if num % i == 0:
-            print("Not Prime")
-            break
-    else:
-        print("Prime")
+if (num <= 1) isPrime = false;
+
+for (let i = 2; i <= Math.sqrt(num); i++) {
+  if (num % i === 0) {
+    isPrime = false;
+    break;
+  }
+}
+
+console.log(isPrime ? "Prime" : "Not Prime");
 ```
 
 ### Optimization
 
-* Checks divisibility up to √n
+* Loop runs till √n
 * Time Complexity: **O(√n)**
 
 ---
@@ -85,23 +88,22 @@ else:
 
 ### Problem
 
-Check if a number is palindrome.
+Check if a number/string is palindrome.
 
 ### Optimized Solution
 
-```python
-num = input("Enter number: ")
+```javascript
+let str = prompt("Enter value:");
 
-if num == num[::-1]:
-    print("Palindrome")
-else:
-    print("Not Palindrome")
+let rev = str.split("").reverse().join("");
+
+console.log(str === rev ? "Palindrome" : "Not Palindrome");
 ```
 
 ### Explanation
 
-* Uses slicing for reverse
-* Fast and readable
+* Uses built-in methods
+* Clean and readable
 
 ---
 
@@ -113,15 +115,15 @@ Find factorial of a number.
 
 ### Optimized Solution
 
-```python
-n = int(input("Enter number: "))
+```javascript
+let n = Number(prompt("Enter number:"));
+let fact = 1;
 
-fact = 1
+for (let i = 1; i <= n; i++) {
+  fact *= i;
+}
 
-for i in range(1, n + 1):
-    fact *= i
-
-print(fact)
+console.log(fact);
 ```
 
 ### Optimization
@@ -139,22 +141,22 @@ Check if a number is Armstrong.
 
 ### Optimized Solution
 
-```python
-num = input("Enter number: ")
+```javascript
+let num = prompt("Enter number:");
+let power = num.length;
+let sum = 0;
 
-power = len(num)
-sum_val = sum(int(d) ** power for d in num)
+for (let d of num) {
+  sum += Number(d) ** power;
+}
 
-if int(num) == sum_val:
-    print("Armstrong")
-else:
-    print("Not Armstrong")
+console.log(Number(num) === sum ? "Armstrong" : "Not Armstrong");
 ```
 
 ### Explanation
 
-* Uses generator expression
 * Works for any digit length
+* Uses exponent operator
 
 ---
 
@@ -166,17 +168,15 @@ Generate random number.
 
 ### Optimized Solution
 
-```python
-import random
-
-num = random.randint(1, 100)
-print(num)
+```javascript
+let num = Math.floor(Math.random() * 100) + 1;
+console.log(num);
 ```
 
 ### Optimization
 
-* Uses `random` module
-* Simple and efficient
+* Uses Math.random()
+* No external library
 
 ---
 
@@ -197,16 +197,17 @@ Print star pattern.
 
 ### Optimized Solution
 
-```python
-n = 4
+```javascript
+let n = 4;
 
-for i in range(1, n + 1):
-    print("*" * i)
+for (let i = 1; i <= n; i++) {
+  console.log("*".repeat(i));
+}
 ```
 
 ### Explanation
 
-* String multiplication
+* Uses repeat()
 * More efficient than nested loops
 
 ---
@@ -215,32 +216,29 @@ for i in range(1, n + 1):
 
 ### Problem
 
-Compare two objects in Python.
+Compare two objects in JavaScript.
 
 ### Optimized Solution
 
-```python
-class Student:
-    def __init__(self, id):
-        self.id = id
+```javascript
+let s1 = { id: 10 };
+let s2 = { id: 10 };
 
-    def __eq__(self, other):
-        return self.id == other.id
+function isEqual(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
 
-s1 = Student(10)
-s2 = Student(10)
-
-print(s1 == s2)
+console.log(isEqual(s1, s2));
 ```
 
 ### Optimization
 
-* Override `__eq__()` method
-* Enables value comparison
+* Value-based comparison
+* Works for simple objects
 
 ---
 
-## 9️⃣ Create Object in Python
+## 9️⃣ Create Object in JavaScript
 
 ### Problem
 
@@ -248,22 +246,25 @@ Create and use object.
 
 ### Solution
 
-```python
-class Car:
-    def __init__(self, name):
-        self.name = name
+```javascript
+class Car {
+  constructor(name) {
+    this.name = name;
+  }
 
-    def show(self):
-        print(self.name)
+  show() {
+    console.log(this.name);
+  }
+}
 
-c = Car("BMW")
-c.show()
+let c = new Car("BMW");
+c.show();
 ```
 
 ### Explanation
 
-* Uses constructor `__init__`
-* Object creation via class
+* Uses ES6 class
+* Clean OOP structure
 
 ---
 
@@ -275,43 +276,43 @@ Print ASCII value of character.
 
 ### Optimized Solution
 
-```python
-ch = input("Enter character: ")
+```javascript
+let ch = prompt("Enter character:");
 
-print(ord(ch))
+console.log(ch.charCodeAt(0));
 ```
 
 ### Explanation
 
-* `ord()` converts char to ASCII
-* Built-in optimized function
+* charCodeAt()
+* Built-in optimized method
 
 ---
 
 # ✅ Summary
 
-| Program    | Best Optimization    |
-| ---------- | -------------------- |
-| Fibonacci  | Tuple Swapping       |
-| Prime      | √n Loop              |
-| Palindrome | String Slicing       |
-| Factorial  | Loop                 |
-| Armstrong  | Generator Expression |
-| Random     | random Module        |
-| Pattern    | String Multiply      |
-| Compare    | **eq**()             |
-| Object     | Class + **init**     |
-| ASCII      | ord()                |
+| Program    | Best Optimization |
+| ---------- | ----------------- |
+| Fibonacci  | Destructuring     |
+| Prime      | √n Loop           |
+| Palindrome | Built-in Reverse  |
+| Factorial  | Loop              |
+| Armstrong  | Exponent Operator |
+| Random     | Math.random()     |
+| Pattern    | repeat()          |
+| Compare    | JSON.stringify    |
+| Object     | ES6 Class         |
+| ASCII      | charCodeAt()      |
 
 ---
 
 ## 🚀 Practice Tip
 
-Enhance these programs by:
+Improve these programs by:
 
 * Converting into functions
-* Adding exception handling
-* Using list comprehensions
-* Writing unit tests
+* Using arrow functions
+* Handling invalid inputs
+* Writing reusable modules
 
-Happy Coding! 🐍💻🔥
+Happy Coding! 🚀💻🔥
