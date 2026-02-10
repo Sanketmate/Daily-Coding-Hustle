@@ -1,0 +1,1 @@
+how card bg got transparent
